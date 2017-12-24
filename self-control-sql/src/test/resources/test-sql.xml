@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testSql>
+    <sql>
+        <![CDATA[
+            select 1 as column1 ,
+                   2 as column2
+              from dual
+        ]]>
+    </sql>
+    <sql>
+        <![CDATA[
+            select 3 as column3 ,
+                   4 as column4
+              from dual
+        ]]>
+    </sql>
+</testSql>

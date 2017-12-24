@@ -4,6 +4,8 @@ import com.whq.mybatis.customsql.entity.TaiInasIpsNaNe;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.test.context.ContextConfiguration;
@@ -20,6 +22,8 @@ import java.math.BigDecimal;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 public class TestTaiInasIpsNaNeMapper {
+    Logger logger = LoggerFactory.getLogger(TestTaiInasIpsNaNeMapper.class);
+
     @Autowired
     private TaiInasIpsNaNeMapper taiInasIpsNaNeMapper;
 
@@ -39,14 +43,14 @@ public class TestTaiInasIpsNaNeMapper {
             taiInasIpsNaNeMapper.insert(taiInasIpsNaNe);
         }
 
-        System.out.println("数据入库成功");
+        logger.info("数据入库成功");
 
         TaiInasIpsNaNe taiInasIpsNaNeSelect = taiInasIpsNaNeMapper.selectByPrimaryKey(bigDecimal);
         Assert.assertEquals("test",taiInasIpsNaNeSelect.getNeAlias());
-        System.out.println("查询入库数据成功");
+        logger.info("查询入库数据成功");
 
         taiInasIpsNaNeMapper.deleteByPrimaryKey(bigDecimal);
-        System.out.println("数据删除成功");
+        logger.info("数据删除成功");
 
     }
 
